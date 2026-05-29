@@ -3,6 +3,7 @@ packages:
   - 'libs/*'
 allowBuilds:
   '@apollo/protobufjs': false
+  '@nestjs/core': false
   '@prisma/client': false
   '@prisma/engines': true
   prisma: true
