@@ -14,12 +14,12 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService,
     private readonly prisma: PrismaService) {}
 
-  // @AllowAuthenticated()
+  @AllowAuthenticated()
   @Mutation(() => User)
   createUser(@Args('createUserInput') args: CreateUserDto.CreateUserInput, 
-  // @GetUser() user: GetUserType
+  @GetUser() user: GetUserType
 ) {
-    // checkRowLevelPermission(user, args.uid)
+    checkRowLevelPermission(user, args.uid)
     return this.usersService.create(args)
   }
 

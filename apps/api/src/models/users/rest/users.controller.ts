@@ -23,14 +23,13 @@ import  type { GetUserType } from 'src/common/types'
 export class UsersController {
   constructor(private readonly prisma: PrismaService) {}
 
-  // @AllowAuthenticated()
-  // @ApiBearerAuth()
+  @AllowAuthenticated()
+  @ApiBearerAuth()
   @ApiCreatedResponse({ type: UserEntity })
   @Post()
-  create(@Body() createUserDto: CreateUser,
-  //  @GetUser() user: GetUserType
+  create(@Body() createUserDto: CreateUser, @GetUser() user: GetUserType
   ) {
-    // checkRowLevelPermission(user, createUserDto.uid)
+    checkRowLevelPermission(user, createUserDto.uid)
     return this.prisma.user.create({ data: createUserDto })
   }
 
