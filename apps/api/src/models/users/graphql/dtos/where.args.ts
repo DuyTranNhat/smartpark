@@ -9,7 +9,7 @@ export class UserWhereUniqueInput {
 }
 
 @InputType()
-export class UserWhereInputStrict implements RestrictProperties<UserWhereInputStrict,Omit<Prisma.UserWhereInput, 'Credentials' | 'AuthProvider' | 'Admin'>> {
+export class UserWhereInputStrict implements RestrictProperties<UserWhereInputStrict,Omit<Prisma.UserWhereInput, 'Credentials' | 'AuthProvider' | 'Admin' | 'image'>> {
   @Field(() => StringFilter, { nullable: true })
   uid!: StringFilter
 

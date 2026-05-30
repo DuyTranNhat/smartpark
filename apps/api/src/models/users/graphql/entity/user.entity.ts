@@ -7,6 +7,8 @@ export class User implements RestrictProperties<User,UserType> {
     @Field({ nullable: true })
     name: string | null
     uid: string
+    @Field({ nullable: true })
+    image: string | null
     createdAt: Date
     updatedAt: Date
     // Todo Add below to make optional fields optional.

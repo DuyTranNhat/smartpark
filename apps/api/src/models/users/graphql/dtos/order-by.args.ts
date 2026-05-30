@@ -49,7 +49,7 @@ export class UserMinOrderByAggregateInput {
 
 @InputType()
 export class UserOrderByWithRelationInputStrict
-  implements RestrictProperties<UserOrderByWithRelationInputStrict, Omit<Prisma.UserOrderByWithAggregationInput, 'Credentials' | 'AuthProvider' | 'Admin'>>
+  implements RestrictProperties<UserOrderByWithRelationInputStrict, Omit<Prisma.UserOrderByWithAggregationInput, 'Credentials' | 'AuthProvider' | 'Admin' | 'image'>>
 {
   @Field(() => Prisma.SortOrder)
   uid!: Prisma.SortOrder
