@@ -4,14 +4,25 @@
   "description": "",
   "main": "index.js",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "libs/*"
+    ],
+    "nohoist": [
+      "**/@nestjs",
+      "**/@nestjs/**"
+    ]
+  },
   "scripts": {
     "format": "prettier  \"{apps,libs}/**/*.{ts,tsx,js,json}\" --ignore-path .gitignore",
-    "format:check": "pnpm format --check",
-    "format:write": "pnpm format --write",
-    "tsc": "pnpm --parallel -r run tsc",
-    "lint": "pnpm --parallel -r run lint",
-    "build": "pnpm --parallel -r run build",
-    "validate": "pnpm format:write && pnpm tsc && pnpm lint && pnpm build",
+    "format:check": "yarn format --check",
+    "format:write": "yarn format --write",
+    "tsc": "yarn nx run-many -t tsc",
+    "lint": "yarn nx run-many -t lint",
+    "build": "yarn nx run-many -t build",
+    "dev": "yarn workspace @smartpark/api run dev",
+    "validate": "yarn format:write && yarn tsc && yarn lint && yarn build",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -19,14 +30,17 @@
   "license": "ISC",
   "devEngines": {
     "packageManager": {
-      "name": "pnpm",
-      "version": "^11.3.0",
+      "name": "yarn",
+      "version": "^1.22.21",
       "onFail": "download"
     }
   },
+  "packageManager": "yarn@1.22.21",
   "type": "module",
   "devDependencies": {
     "husky": "^9.1.7",
+    "nestjs-prisma-codegen": "^3.2.0",
+    "nx": "22.7.5",
     "prettier": "^3.8.3",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"

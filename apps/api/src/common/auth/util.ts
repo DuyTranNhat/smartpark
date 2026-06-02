@@ -1,4 +1,4 @@
-import { GetUserType, Role } from 'src/common/types'
+import type { GetUserType, Role } from 'src/common/types'
 import { ForbiddenException } from '@nestjs/common'
 
 export const checkRowLevelPermission = (

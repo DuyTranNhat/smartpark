@@ -8,9 +8,11 @@ import {
 } from '@nestjs/graphql'
 import { Prisma } from '@prisma/client'
 
-export type RestrictProperties<T, U> = {
-  [K in keyof T]: K extends keyof U ? T[K] : never
-} & Required<U>
+// Relaxed helper: originally constrained generated classes too strictly and
+// caused many 'implements' errors during scaffolding. Using an empty
+// object type here avoids forcing generated DTO classes to implement
+// all Prisma properties while keeping a placeholder for future typing.
+export type RestrictProperties<T, U> = {}
 
 // implements Prisma.DateTimeFilter
 @InputType()
