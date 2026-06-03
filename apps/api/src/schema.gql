@@ -109,6 +109,8 @@ type Company {
   id: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
+  garages: [Garage!]!
+  managers: [Manager!]!
 }
 
 type ValetAssignment {
