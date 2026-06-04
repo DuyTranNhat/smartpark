@@ -1,6 +1,12 @@
 import { Field, InputType, PartialType, Int } from '@nestjs/graphql'
 import { $Enums, Prisma } from '@prisma/client'
-import { DateTimeFilter, FloatFilter, IntFilter, RestrictProperties, StringFilter } from 'src/common/dtos/common.input'
+import {
+  DateTimeFilter,
+  FloatFilter,
+  IntFilter,
+  RestrictProperties,
+  StringFilter,
+} from 'src/common/dtos/common.input'
 import { BookingTimelineListRelationFilter } from 'src/models/booking-timelines/graphql/dtos/where.args'
 import { CustomerRelationFilter } from 'src/models/customers/graphql/dtos/where.args'
 import { SlotRelationFilter } from 'src/models/slots/graphql/dtos/where.args'
@@ -13,7 +19,10 @@ export class BookingWhereUniqueInput {
 }
 
 @InputType()
-export class BookingWhereInputStrict implements RestrictProperties<BookingWhereInputStrict, Prisma.BookingWhereInput> {
+export class BookingWhereInputStrict implements RestrictProperties<
+  BookingWhereInputStrict,
+  Prisma.BookingWhereInput
+> {
   // Todo: Add the below field decorator only to the $Enums types.
   // @Field(() => $Enums.x)
   id: IntFilter
@@ -35,16 +44,13 @@ export class BookingWhereInputStrict implements RestrictProperties<BookingWhereI
   Slot: SlotRelationFilter
   BookingTimeline: BookingTimelineListRelationFilter
 
-
   AND: BookingWhereInput[]
   OR: BookingWhereInput[]
   NOT: BookingWhereInput[]
 }
 
 @InputType()
-export class BookingWhereInput extends PartialType(
-  BookingWhereInputStrict,
-) {}
+export class BookingWhereInput extends PartialType(BookingWhereInputStrict) {}
 
 @InputType()
 export class BookingListRelationFilter {

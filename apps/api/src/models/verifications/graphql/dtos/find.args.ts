@@ -1,7 +1,16 @@
-import { ArgsType, Field, registerEnumType, PartialType, Int } from '@nestjs/graphql'
+import {
+  ArgsType,
+  Field,
+  registerEnumType,
+  PartialType,
+  Int,
+} from '@nestjs/graphql'
 import { Prisma } from '@prisma/client'
 import { VerificationOrderByWithRelationInput } from './order-by.args'
-import { VerificationWhereInput, VerificationWhereUniqueInput } from './where.args'
+import {
+  VerificationWhereInput,
+  VerificationWhereUniqueInput,
+} from './where.args'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 registerEnumType(Prisma.VerificationScalarFieldEnum, {
@@ -9,9 +18,10 @@ registerEnumType(Prisma.VerificationScalarFieldEnum, {
 })
 
 @ArgsType()
-class FindManyVerificationArgsStrict
-  implements RestrictProperties<FindManyVerificationArgsStrict, Omit<Prisma.VerificationFindManyArgs, 'include' | 'select'>>
-{
+class FindManyVerificationArgsStrict implements RestrictProperties<
+  FindManyVerificationArgsStrict,
+  Omit<Prisma.VerificationFindManyArgs, 'include' | 'select'>
+> {
   @Field(() => VerificationWhereInput, { nullable: true })
   where!: VerificationWhereInput
 

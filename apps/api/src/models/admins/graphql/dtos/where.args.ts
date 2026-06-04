@@ -1,6 +1,10 @@
 import { Field, InputType, PartialType } from '@nestjs/graphql'
 import { Prisma } from '@prisma/client'
-import { DateTimeFilter, RestrictProperties, StringFilter } from 'src/common/dtos/common.input'
+import {
+  DateTimeFilter,
+  RestrictProperties,
+  StringFilter,
+} from 'src/common/dtos/common.input'
 import { UserRelationFilter } from 'src/models/users/graphql/dtos/where.args'
 import { VerificationListRelationFilter } from 'src/models/verifications/graphql/dtos/where.args'
 
@@ -11,7 +15,10 @@ export class AdminWhereUniqueInput {
 }
 
 @InputType()
-export class AdminWhereInputStrict implements RestrictProperties<AdminWhereInputStrict, Prisma.AdminWhereInput> {
+export class AdminWhereInputStrict implements RestrictProperties<
+  AdminWhereInputStrict,
+  Prisma.AdminWhereInput
+> {
   @Field(() => StringFilter, { nullable: true })
   uid: StringFilter
 
@@ -26,7 +33,7 @@ export class AdminWhereInputStrict implements RestrictProperties<AdminWhereInput
 
   @Field(() => VerificationListRelationFilter, { nullable: true })
   Verifications: Prisma.VerificationListRelationFilter
-  
+
   // Todo: Add the below field decorator only to the $Enums types.
   // @Field(() => $Enums.x)
 
@@ -42,9 +49,7 @@ export class AdminWhereInputStrict implements RestrictProperties<AdminWhereInput
 }
 
 @InputType()
-export class AdminWhereInput extends PartialType(
-  AdminWhereInputStrict,
-) {}
+export class AdminWhereInput extends PartialType(AdminWhereInputStrict) {}
 
 @InputType()
 export class AdminListRelationFilter {

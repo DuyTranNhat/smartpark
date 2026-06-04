@@ -7,4 +7,3 @@ export class CreateValetInput extends OmitType(
   ['createdAt', 'updatedAt'],
   InputType,
 ) {}
-

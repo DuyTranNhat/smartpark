@@ -2,27 +2,28 @@ import { Address } from '@prisma/client'
 import { IsDate, IsString, IsInt, IsNumber } from 'class-validator'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
-export class AddressEntity implements RestrictProperties<AddressEntity, Address> {
-    @IsDate()
-    createdAt: Date
+export class AddressEntity implements RestrictProperties<
+  AddressEntity,
+  Address
+> {
+  @IsDate()
+  createdAt: Date
 
-    @IsDate()
-    updatedAt: Date
+  @IsDate()
+  updatedAt: Date
 
-    @IsInt()
-    id: number
+  @IsInt()
+  id: number
 
-    @IsInt()
-    garageId: number
+  @IsInt()
+  garageId: number
 
-    @IsString()
-    address: string
+  @IsString()
+  address: string
 
-    @IsNumber()
-    lat: number
+  @IsNumber()
+  lat: number
 
-    @IsNumber()
-    lng: number
-
+  @IsNumber()
+  lng: number
 }
-

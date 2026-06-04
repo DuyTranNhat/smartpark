@@ -1,5 +1,12 @@
 import {
-  Controller, Get, Post, Body, Patch, Param, Delete, Query
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
 } from '@nestjs/common'
 
 import { PrismaService } from 'src/common/prisma/prisma.service'
@@ -14,9 +21,8 @@ import {
 } from '@nestjs/swagger'
 import { BookingTimelineEntity } from './entity/booking-timeline.entity'
 import { AllowAuthenticated, GetUser } from 'src/common/auth/auth.decorator'
-  import type { GetUserType } from 'src/common/types'
+import type { GetUserType } from 'src/common/types'
 import { checkRowLevelPermission } from 'src/common/auth/util'
-
 
 @ApiTags('booking-timelines')
 @Controller('booking-timelines')
@@ -27,9 +33,14 @@ export class BookingTimelinesController {
   @ApiBearerAuth()
   @ApiCreatedResponse({ type: BookingTimelineEntity })
   @Post()
-  create(@Body() createBookingTimelineDto: CreateBookingTimeline, @GetUser() user: GetUserType) {
+  create(
+    @Body() createBookingTimelineDto: CreateBookingTimeline,
+    @GetUser() user: GetUserType,
+  ) {
     checkRowLevelPermission(user, (createBookingTimelineDto as any).uid)
-    return this.prisma.bookingTimeline.create({ data: createBookingTimelineDto as any })
+    return this.prisma.bookingTimeline.create({
+      data: createBookingTimelineDto as any,
+    })
   }
 
   @ApiOkResponse({ type: [BookingTimelineEntity] })
@@ -57,7 +68,9 @@ export class BookingTimelinesController {
     @Body() updateBookingTimelineDto: UpdateBookingTimeline,
     @GetUser() user: GetUserType,
   ) {
-    const bookingTimeline = await this.prisma.bookingTimeline.findUnique({ where: { id } })
+    const bookingTimeline = await this.prisma.bookingTimeline.findUnique({
+      where: { id },
+    })
     checkRowLevelPermission(user, (bookingTimeline as any)?.uid)
     return this.prisma.bookingTimeline.update({
       where: { id },
@@ -69,7 +82,9 @@ export class BookingTimelinesController {
   @AllowAuthenticated()
   @Delete(':id')
   async remove(@Param('id') id: number, @GetUser() user: GetUserType) {
-    const bookingTimeline = await this.prisma.bookingTimeline.findUnique({ where: { id } })
+    const bookingTimeline = await this.prisma.bookingTimeline.findUnique({
+      where: { id },
+    })
     checkRowLevelPermission(user, (bookingTimeline as any)?.uid)
     return this.prisma.bookingTimeline.delete({ where: { id } })
   }

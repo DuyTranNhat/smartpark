@@ -3,12 +3,12 @@ import { Manager as ManagerType } from '@prisma/client'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 @ObjectType()
-export class Manager implements RestrictProperties<Manager,ManagerType> {
-    uid: string
-    createdAt: Date
-    updatedAt: Date
+export class Manager implements RestrictProperties<Manager, ManagerType> {
+  uid: string
+  createdAt: Date
+  updatedAt: Date
 
-    @Field({ nullable: true })
-    displayName: string | null
-    companyId: number | null
+  @Field({ nullable: true })
+  displayName: string | null
+  companyId: number | null
 }

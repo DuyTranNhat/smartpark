@@ -9,7 +9,10 @@ export class SlotWhereUniqueInput {
 }
 
 @InputType()
-export class SlotWhereInputStrict implements RestrictProperties<SlotWhereInputStrict, Prisma.SlotWhereInput> {
+export class SlotWhereInputStrict implements RestrictProperties<
+  SlotWhereInputStrict,
+  Prisma.SlotWhereInput
+> {
   // Todo: Add the below field decorator only to the $Enums types.
   // @Field(() => $Enums.x)
 
@@ -19,9 +22,7 @@ export class SlotWhereInputStrict implements RestrictProperties<SlotWhereInputSt
 }
 
 @InputType()
-export class SlotWhereInput extends PartialType(
-  SlotWhereInputStrict,
-) {}
+export class SlotWhereInput extends PartialType(SlotWhereInputStrict) {}
 
 @InputType()
 export class SlotListRelationFilter {

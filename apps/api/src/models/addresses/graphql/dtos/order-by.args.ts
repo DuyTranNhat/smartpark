@@ -4,9 +4,10 @@ import { RestrictProperties } from 'src/common/dtos/common.input'
 import { GarageOrderByWithRelationInput } from 'src/models/garages/graphql/dtos/order-by.args'
 
 @InputType()
-export class AddressOrderByWithRelationInputStrict
-  implements RestrictProperties<AddressOrderByWithRelationInputStrict, Prisma.AddressOrderByWithRelationInput>
-{
+export class AddressOrderByWithRelationInputStrict implements RestrictProperties<
+  AddressOrderByWithRelationInputStrict,
+  Prisma.AddressOrderByWithRelationInput
+> {
   @Field(() => Prisma.SortOrder)
   id: Prisma.SortOrder
   @Field(() => Prisma.SortOrder)
@@ -20,13 +21,12 @@ export class AddressOrderByWithRelationInputStrict
   @Field(() => Prisma.SortOrder)
   lng: Prisma.SortOrder
   @Field(() => Prisma.SortOrder)
-  garageId: Prisma.SortOrder  
+  garageId: Prisma.SortOrder
   @Field(() => GarageOrderByWithRelationInput, { nullable: true })
   Garage: GarageOrderByWithRelationInput
   // Todo: Add below field decorator to the SortOrder properties.
   // @Field(() => Prisma.SortOrder)
 }
-
 
 @InputType()
 export class AddressOrderByWithRelationInput extends PartialType(

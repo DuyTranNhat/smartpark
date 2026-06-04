@@ -25,7 +25,6 @@ export class CustomerOrderByWithRelationInputStrict {
   // @Field(() => Prisma.SortOrder)
 }
 
-
 @InputType()
 export class CustomerOrderByWithRelationInput extends PartialType(
   CustomerOrderByWithRelationInputStrict,

@@ -7,4 +7,3 @@ export class CreateSlotInput extends OmitType(
   ['createdAt', 'updatedAt', 'id'],
   InputType,
 ) {}
-

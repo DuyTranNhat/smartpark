@@ -1,4 +1,11 @@
-import { Resolver, Query, Mutation, Args, ResolveField, Parent } from '@nestjs/graphql'
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql'
 import { ValetsService } from './valets.service'
 import { Valet } from './entity/valet.entity'
 import { FindManyValetArgs, FindUniqueValetArgs } from './dtos/find.args'
@@ -12,12 +19,17 @@ import { ValetAssignment } from 'src/models/valet-assignments/graphql/entity/val
 
 @Resolver(() => Valet)
 export class ValetsResolver {
-  constructor(private readonly valetsService: ValetsService,
-    private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly valetsService: ValetsService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   @AllowAuthenticated()
   @Mutation(() => Valet)
-  createValet(@Args('createValetInput') args: CreateValetInput, @GetUser() user: GetUserType) {
+  createValet(
+    @Args('createValetInput') args: CreateValetInput,
+    @GetUser() user: GetUserType,
+  ) {
     checkRowLevelPermission(user, (args as any).uid)
     return this.valetsService.create(args as any)
   }
@@ -34,8 +46,11 @@ export class ValetsResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Valet)
-  async updateValet(@Args('updateValetInput') args: UpdateValetInput, @GetUser() user: GetUserType) {
-     const valet = await this.prisma.valet.findUnique({
+  async updateValet(
+    @Args('updateValetInput') args: UpdateValetInput,
+    @GetUser() user: GetUserType,
+  ) {
+    const valet = await this.prisma.valet.findUnique({
       where: { uid: args.uid },
     })
     checkRowLevelPermission(user, valet?.uid)
@@ -44,7 +59,10 @@ export class ValetsResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Valet)
-  async removeValet(@Args() args: FindUniqueValetArgs, @GetUser() user: GetUserType) {
+  async removeValet(
+    @Args() args: FindUniqueValetArgs,
+    @GetUser() user: GetUserType,
+  ) {
     const valet = await this.prisma.valet.findUnique(args as any)
     checkRowLevelPermission(user, valet?.uid)
     return this.valetsService.remove(args as any)

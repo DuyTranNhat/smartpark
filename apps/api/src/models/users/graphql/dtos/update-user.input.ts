@@ -6,4 +6,3 @@ export class UpdateUserInput extends PartialType(User) {
   @Field(() => String)
   uid!: User['uid']
 }
-  

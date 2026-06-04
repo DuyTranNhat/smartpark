@@ -5,10 +5,11 @@ import { AdminOrderByWithRelationInput } from 'src/models/admins/graphql/dtos/or
 import { GarageOrderByWithRelationInput } from 'src/models/garages/graphql/dtos/order-by.args'
 
 @InputType()
-export class VerificationOrderByWithRelationInputStrict
-  implements RestrictProperties<VerificationOrderByWithRelationInputStrict, Prisma.VerificationOrderByWithRelationInput>
-{
-    @Field(() => Prisma.SortOrder)
+export class VerificationOrderByWithRelationInputStrict implements RestrictProperties<
+  VerificationOrderByWithRelationInputStrict,
+  Prisma.VerificationOrderByWithRelationInput
+> {
+  @Field(() => Prisma.SortOrder)
   createdAt: Prisma.SortOrder
   @Field(() => Prisma.SortOrder)
   updatedAt: Prisma.SortOrder
@@ -23,7 +24,6 @@ export class VerificationOrderByWithRelationInputStrict
   // Todo: Add below field decorator to the SortOrder properties.
   // @Field(() => Prisma.SortOrder)
 }
-
 
 @InputType()
 export class VerificationOrderByWithRelationInput extends PartialType(

@@ -9,9 +9,10 @@ registerEnumType(Prisma.BookingScalarFieldEnum, {
 })
 
 @ArgsType()
-class FindManyBookingArgsStrict
-  implements RestrictProperties<FindManyBookingArgsStrict, Omit<Prisma.BookingFindManyArgs, 'include' | 'select'>>
-{
+class FindManyBookingArgsStrict implements RestrictProperties<
+  FindManyBookingArgsStrict,
+  Omit<Prisma.BookingFindManyArgs, 'include' | 'select'>
+> {
   where: BookingWhereInput
   orderBy: BookingOrderByWithRelationInput[]
   cursor: BookingWhereUniqueInput

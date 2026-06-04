@@ -1,4 +1,11 @@
-import { Resolver, Query, Mutation, Args, Parent, ResolveField } from '@nestjs/graphql'
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Parent,
+  ResolveField,
+} from '@nestjs/graphql'
 import { GaragesService } from './garages.service'
 import { Garage } from './entity/garage.entity'
 import { FindManyGarageArgs, FindUniqueGarageArgs } from './dtos/find.args'
@@ -15,12 +22,17 @@ import { Verification } from 'src/models/verifications/graphql/entity/verificati
 
 @Resolver(() => Garage)
 export class GaragesResolver {
-  constructor(private readonly garagesService: GaragesService,
-    private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly garagesService: GaragesService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   @AllowAuthenticated('manager')
   @Mutation(() => Garage)
-  createGarage(@Args('createGarageInput') args: CreateGarageInput, @GetUser() user: GetUserType) {
+  createGarage(
+    @Args('createGarageInput') args: CreateGarageInput,
+    @GetUser() user: GetUserType,
+  ) {
     return this.garagesService.create(args)
   }
 
@@ -36,8 +48,11 @@ export class GaragesResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Garage)
-  async updateGarage(@Args('updateGarageInput') args: UpdateGarageInput, @GetUser() user: GetUserType) {
-     const garage = await this.prisma.garage.findUnique({
+  async updateGarage(
+    @Args('updateGarageInput') args: UpdateGarageInput,
+    @GetUser() user: GetUserType,
+  ) {
+    const garage = await this.prisma.garage.findUnique({
       where: { id: args.id },
       include: { Company: { include: { Managers: true } } },
     })
@@ -50,8 +65,11 @@ export class GaragesResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Garage)
-  async removeGarage(@Args() args: FindUniqueGarageArgs, @GetUser() user: GetUserType) {
-     const garage = await this.prisma.garage.findUnique({
+  async removeGarage(
+    @Args() args: FindUniqueGarageArgs,
+    @GetUser() user: GetUserType,
+  ) {
+    const garage = await this.prisma.garage.findUnique({
       where: { id: args.where.id },
       include: { Company: { include: { Managers: true } } },
     })

@@ -1,4 +1,11 @@
-import { Resolver, Query, Mutation, Args, ResolveField, Parent } from '@nestjs/graphql'
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql'
 import { SlotsService } from './slots.service'
 import { Slot } from './entity/slot.entity'
 import { FindManySlotArgs, FindUniqueSlotArgs } from './dtos/find.args'
@@ -13,12 +20,17 @@ import { Booking } from 'src/models/bookings/graphql/entity/booking.entity'
 
 @Resolver(() => Slot)
 export class SlotsResolver {
-  constructor(private readonly slotsService: SlotsService,
-    private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly slotsService: SlotsService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   @AllowAuthenticated()
   @Mutation(() => Slot)
-  async reateSlot(@Args('createSlotInput') args: CreateSlotInput, @GetUser() user: GetUserType) {
+  async reateSlot(
+    @Args('createSlotInput') args: CreateSlotInput,
+    @GetUser() user: GetUserType,
+  ) {
     const garage = await this.prisma.garage.findUnique({
       where: { id: args.garageId },
       include: { Company: { include: { Managers: true } } },
@@ -42,8 +54,11 @@ export class SlotsResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Slot)
-  async updateSlot(@Args('updateSlotInput') args: UpdateSlotInput, @GetUser() user: GetUserType) {
-   const slot = await this.prisma.slot.findUnique({
+  async updateSlot(
+    @Args('updateSlotInput') args: UpdateSlotInput,
+    @GetUser() user: GetUserType,
+  ) {
+    const slot = await this.prisma.slot.findUnique({
       where: { id: args.id },
       include: {
         Garage: {
@@ -64,8 +79,11 @@ export class SlotsResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Slot)
-  async removeSlot(@Args() args: FindUniqueSlotArgs, @GetUser() user: GetUserType) {
-   const slot = await this.prisma.slot.findUnique({
+  async removeSlot(
+    @Args() args: FindUniqueSlotArgs,
+    @GetUser() user: GetUserType,
+  ) {
+    const slot = await this.prisma.slot.findUnique({
       where: { id: args.where.id },
       include: {
         Garage: {

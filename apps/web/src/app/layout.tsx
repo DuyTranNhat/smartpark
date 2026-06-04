@@ -27,10 +27,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    ><ApolloProvider>
-      
+    >
+      <ApolloProvider>
         <body className="min-h-full flex flex-col">{children}</body>
-    </ApolloProvider>
+      </ApolloProvider>
     </html>
   )
 }

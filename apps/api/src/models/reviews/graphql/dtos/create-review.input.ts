@@ -7,4 +7,3 @@ export class CreateReviewInput extends OmitType(
   ['createdAt', 'updatedAt', 'id'],
   InputType,
 ) {}
-

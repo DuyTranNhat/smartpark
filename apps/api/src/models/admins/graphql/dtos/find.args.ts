@@ -9,9 +9,10 @@ registerEnumType(Prisma.AdminScalarFieldEnum, {
 })
 
 @ArgsType()
-class FindManyAdminArgsStrict
-  implements RestrictProperties<FindManyAdminArgsStrict, Omit<Prisma.AdminFindManyArgs, 'include' | 'select'>>
-{
+class FindManyAdminArgsStrict implements RestrictProperties<
+  FindManyAdminArgsStrict,
+  Omit<Prisma.AdminFindManyArgs, 'include' | 'select'>
+> {
   where: AdminWhereInput
   orderBy: AdminOrderByWithRelationInput[]
   cursor: AdminWhereUniqueInput
@@ -22,9 +23,7 @@ class FindManyAdminArgsStrict
 }
 
 @ArgsType()
-export class FindManyAdminArgs extends PartialType(
-  FindManyAdminArgsStrict,
-) {}
+export class FindManyAdminArgs extends PartialType(FindManyAdminArgsStrict) {}
 
 @ArgsType()
 export class FindUniqueAdminArgs {

@@ -3,13 +3,13 @@ import { Prisma } from '@prisma/client'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 @InputType()
-export class ManagerOrderByWithRelationInputStrict
-  implements RestrictProperties<ManagerOrderByWithRelationInputStrict, Prisma.ManagerOrderByWithRelationInput>
-{
+export class ManagerOrderByWithRelationInputStrict implements RestrictProperties<
+  ManagerOrderByWithRelationInputStrict,
+  Prisma.ManagerOrderByWithRelationInput
+> {
   @Field(() => Prisma.SortOrder)
   uid?: Prisma.SortOrder
 }
-
 
 @InputType()
 export class ManagerOrderByWithRelationInput extends PartialType(

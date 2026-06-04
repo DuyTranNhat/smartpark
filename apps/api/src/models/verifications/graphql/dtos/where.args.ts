@@ -9,7 +9,10 @@ export class VerificationWhereUniqueInput {
 }
 
 @InputType()
-export class VerificationWhereInputStrict implements RestrictProperties<VerificationWhereInputStrict, Prisma.VerificationWhereInput> {
+export class VerificationWhereInputStrict implements RestrictProperties<
+  VerificationWhereInputStrict,
+  Prisma.VerificationWhereInput
+> {
   // Todo: Add the below field decorator only to the $Enums types.
   // @Field(() => $Enums.x)
   @Field(() => [VerificationWhereInputStrict], { nullable: true })

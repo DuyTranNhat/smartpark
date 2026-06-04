@@ -29,7 +29,7 @@ const MAX_AGE = 24 * 60 * 60
 @Module({
   imports: [
     ConfigModule.forRoot(),
-     JwtModule.register({
+    JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: MAX_AGE },

@@ -9,7 +9,10 @@ export class GarageWhereUniqueInput {
 }
 
 @InputType()
-export class GarageWhereInputStrict implements RestrictProperties<GarageWhereInputStrict, Prisma.GarageWhereInput> {
+export class GarageWhereInputStrict implements RestrictProperties<
+  GarageWhereInputStrict,
+  Prisma.GarageWhereInput
+> {
   // Todo: Add the below field decorator only to the $Enums types.
   // @Field(() => $Enums.x)
 
@@ -19,9 +22,7 @@ export class GarageWhereInputStrict implements RestrictProperties<GarageWhereInp
 }
 
 @InputType()
-export class GarageWhereInput extends PartialType(
-  GarageWhereInputStrict,
-) {}
+export class GarageWhereInput extends PartialType(GarageWhereInputStrict) {}
 
 @InputType()
 export class GarageListRelationFilter {

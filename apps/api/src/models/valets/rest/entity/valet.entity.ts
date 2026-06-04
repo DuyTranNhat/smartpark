@@ -3,27 +3,26 @@ import { IsDate, IsString, IsInt, IsOptional } from 'class-validator'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 export class ValetEntity implements RestrictProperties<ValetEntity, Valet> {
-	@IsString()
-	uid: string
+  @IsString()
+  uid: string
 
-	@IsDate()
-	createdAt: Date
+  @IsDate()
+  createdAt: Date
 
-	@IsDate()
-	updatedAt: Date
+  @IsDate()
+  updatedAt: Date
 
-	@IsString()
-	displayName: string
+  @IsString()
+  displayName: string
 
-	@IsOptional()
-	@IsString()
-	image: string | null
+  @IsOptional()
+  @IsString()
+  image: string | null
 
-	@IsString()
-	licenceID: string
+  @IsString()
+  licenceID: string
 
-	@IsOptional()
-	@IsInt()
-	companyId: number | null
+  @IsOptional()
+  @IsInt()
+  companyId: number | null
 }
-

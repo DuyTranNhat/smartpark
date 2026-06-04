@@ -3,15 +3,15 @@ import { Review as ReviewType } from '@prisma/client'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 @ObjectType()
-export class Review implements RestrictProperties<Review,ReviewType> {
-    id: number
-    createdAt: Date
-    updatedAt: Date
-    rating: number
+export class Review implements RestrictProperties<Review, ReviewType> {
+  id: number
+  createdAt: Date
+  updatedAt: Date
+  rating: number
 
-    @Field({ nullable: true })
-    comment: string | null
+  @Field({ nullable: true })
+  comment: string | null
 
-    customerId: string
-    garageId: number
+  customerId: string
+  garageId: number
 }

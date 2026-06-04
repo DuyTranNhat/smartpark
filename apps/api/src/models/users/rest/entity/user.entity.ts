@@ -3,13 +3,11 @@ import { IsDate, IsString, IsInt, IsOptional } from 'class-validator'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 export class UserEntity implements RestrictProperties<UserEntity, User> {
-    uid: string
-    @IsOptional()
-    name: string 
-    @IsOptional()
-    image: string
-    createdAt: Date
-    updatedAt: Date
-
+  uid: string
+  @IsOptional()
+  name: string
+  @IsOptional()
+  image: string
+  createdAt: Date
+  updatedAt: Date
 }
-

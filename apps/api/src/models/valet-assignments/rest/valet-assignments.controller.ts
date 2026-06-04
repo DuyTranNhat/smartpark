@@ -1,5 +1,12 @@
 import {
-  Controller, Get, Post, Body, Patch, Param, Delete, Query
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
 } from '@nestjs/common'
 
 import { PrismaService } from 'src/common/prisma/prisma.service'
@@ -17,7 +24,6 @@ import { AllowAuthenticated, GetUser } from 'src/common/auth/auth.decorator'
 import type { GetUserType } from 'src/common/types'
 import { checkRowLevelPermission } from 'src/common/auth/util'
 
-
 @ApiTags('valet-assignments')
 @Controller('valet-assignments')
 export class ValetAssignmentsController {
@@ -27,9 +33,14 @@ export class ValetAssignmentsController {
   @ApiBearerAuth()
   @ApiCreatedResponse({ type: ValetAssignmentEntity })
   @Post()
-  create(@Body() createValetAssignmentDto: CreateValetAssignment, @GetUser() user: GetUserType) {
+  create(
+    @Body() createValetAssignmentDto: CreateValetAssignment,
+    @GetUser() user: GetUserType,
+  ) {
     checkRowLevelPermission(user, (createValetAssignmentDto as any).uid)
-    return this.prisma.valetAssignment.create({ data: createValetAssignmentDto as any })
+    return this.prisma.valetAssignment.create({
+      data: createValetAssignmentDto as any,
+    })
   }
 
   @ApiOkResponse({ type: [ValetAssignmentEntity] })
@@ -57,8 +68,13 @@ export class ValetAssignmentsController {
     @Body() updateValetAssignmentDto: UpdateValetAssignment,
     @GetUser() user: GetUserType,
   ) {
-    const valetAssignment = await this.prisma.valetAssignment.findUnique({ where: { bookingId } })
-    checkRowLevelPermission(user, [(valetAssignment as any)?.pickupValetId, (valetAssignment as any)?.returnValetId])
+    const valetAssignment = await this.prisma.valetAssignment.findUnique({
+      where: { bookingId },
+    })
+    checkRowLevelPermission(user, [
+      (valetAssignment as any)?.pickupValetId,
+      (valetAssignment as any)?.returnValetId,
+    ])
     return this.prisma.valetAssignment.update({
       where: { bookingId },
       data: updateValetAssignmentDto as any,
@@ -68,9 +84,17 @@ export class ValetAssignmentsController {
   @ApiBearerAuth()
   @AllowAuthenticated()
   @Delete(':bookingId')
-  async remove(@Param('bookingId') bookingId: number, @GetUser() user: GetUserType) {
-    const valetAssignment = await this.prisma.valetAssignment.findUnique({ where: { bookingId } })
-    checkRowLevelPermission(user, [(valetAssignment as any)?.pickupValetId, (valetAssignment as any)?.returnValetId])
+  async remove(
+    @Param('bookingId') bookingId: number,
+    @GetUser() user: GetUserType,
+  ) {
+    const valetAssignment = await this.prisma.valetAssignment.findUnique({
+      where: { bookingId },
+    })
+    checkRowLevelPermission(user, [
+      (valetAssignment as any)?.pickupValetId,
+      (valetAssignment as any)?.returnValetId,
+    ])
     return this.prisma.valetAssignment.delete({ where: { bookingId } })
   }
 }

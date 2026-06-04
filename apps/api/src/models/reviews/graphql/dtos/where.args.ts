@@ -9,7 +9,10 @@ export class ReviewWhereUniqueInput {
 }
 
 @InputType()
-export class ReviewWhereInputStrict implements RestrictProperties<ReviewWhereInputStrict, Prisma.ReviewWhereInput> {
+export class ReviewWhereInputStrict implements RestrictProperties<
+  ReviewWhereInputStrict,
+  Prisma.ReviewWhereInput
+> {
   // Todo: Add the below field decorator only to the $Enums types.
   // @Field(() => $Enums.x)
 
@@ -19,9 +22,7 @@ export class ReviewWhereInputStrict implements RestrictProperties<ReviewWhereInp
 }
 
 @InputType()
-export class ReviewWhereInput extends PartialType(
-  ReviewWhereInputStrict,
-) {}
+export class ReviewWhereInput extends PartialType(ReviewWhereInputStrict) {}
 
 @InputType()
 export class ReviewListRelationFilter {

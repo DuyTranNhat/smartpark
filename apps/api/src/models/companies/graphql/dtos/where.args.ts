@@ -9,7 +9,10 @@ export class CompanyWhereUniqueInput {
 }
 
 @InputType()
-export class CompanyWhereInputStrict implements RestrictProperties<CompanyWhereInputStrict, Prisma.CompanyWhereInput> {
+export class CompanyWhereInputStrict implements RestrictProperties<
+  CompanyWhereInputStrict,
+  Prisma.CompanyWhereInput
+> {
   // Todo: Add the below field decorator only to the $Enums types.
   // @Field(() => $Enums.x)
 
@@ -19,9 +22,7 @@ export class CompanyWhereInputStrict implements RestrictProperties<CompanyWhereI
 }
 
 @InputType()
-export class CompanyWhereInput extends PartialType(
-  CompanyWhereInputStrict,
-) {}
+export class CompanyWhereInput extends PartialType(CompanyWhereInputStrict) {}
 
 @InputType()
 export class CompanyListRelationFilter {

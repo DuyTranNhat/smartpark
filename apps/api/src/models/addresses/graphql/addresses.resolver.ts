@@ -11,13 +11,18 @@ import { PrismaService } from 'src/common/prisma/prisma.service'
 
 @Resolver(() => Address)
 export class AddressesResolver {
-  constructor(private readonly addressesService: AddressesService,
-    private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly addressesService: AddressesService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   @AllowAuthenticated()
   @Mutation(() => Address)
-  async createAddress(@Args('createAddressInput') args: CreateAddressInput, @GetUser() user: GetUserType) {
-     const garage = await this.prisma.garage.findUnique({
+  async createAddress(
+    @Args('createAddressInput') args: CreateAddressInput,
+    @GetUser() user: GetUserType,
+  ) {
+    const garage = await this.prisma.garage.findUnique({
       where: { id: args.garageId },
       include: { Company: { include: { Managers: true } } },
     })
@@ -40,8 +45,11 @@ export class AddressesResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Address)
-  async updateAddress(@Args('updateAddressInput') args: UpdateAddressInput, @GetUser() user: GetUserType) {
-     const address = await this.prisma.address.findUnique({
+  async updateAddress(
+    @Args('updateAddressInput') args: UpdateAddressInput,
+    @GetUser() user: GetUserType,
+  ) {
+    const address = await this.prisma.address.findUnique({
       where: { id: args.id },
       include: {
         Garage: {
@@ -58,8 +66,11 @@ export class AddressesResolver {
 
   @AllowAuthenticated()
   @Mutation(() => Address)
-  async removeAddress(@Args() args: FindUniqueAddressArgs, @GetUser() user: GetUserType) {
-     const address = await this.prisma.address.findUnique({
+  async removeAddress(
+    @Args() args: FindUniqueAddressArgs,
+    @GetUser() user: GetUserType,
+  ) {
+    const address = await this.prisma.address.findUnique({
       where: { id: args.where.id },
       include: {
         Garage: {

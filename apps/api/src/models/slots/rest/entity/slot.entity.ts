@@ -3,38 +3,37 @@ import { IsDate, IsString, IsInt, IsOptional, IsNumber } from 'class-validator'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 export class SlotEntity implements RestrictProperties<SlotEntity, Slot> {
-	@IsInt()
-	id: number
+  @IsInt()
+  id: number
 
-	@IsDate()
-	createdAt: Date
+  @IsDate()
+  createdAt: Date
 
-	@IsDate()
-	updatedAt: Date
+  @IsDate()
+  updatedAt: Date
 
-	@IsOptional()
-	@IsString()
-	displayName: string | null
+  @IsOptional()
+  @IsString()
+  displayName: string | null
 
-	@IsNumber()
-	pricePerHour: number
+  @IsNumber()
+  pricePerHour: number
 
-	@IsOptional()
-	@IsInt()
-	length: number | null
+  @IsOptional()
+  @IsInt()
+  length: number | null
 
-	@IsOptional()
-	@IsInt()
-	width: number | null
+  @IsOptional()
+  @IsInt()
+  width: number | null
 
-	@IsOptional()
-	@IsInt()
-	height: number | null
+  @IsOptional()
+  @IsInt()
+  height: number | null
 
-	@IsString()
-	type: string
+  @IsString()
+  type: string
 
-	@IsInt()
-	garageId: number
+  @IsInt()
+  garageId: number
 }
-

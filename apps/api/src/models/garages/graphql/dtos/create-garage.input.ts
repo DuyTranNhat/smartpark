@@ -7,4 +7,3 @@ export class CreateGarageInput extends OmitType(
   ['createdAt', 'updatedAt', 'id'],
   InputType,
 ) {}
-

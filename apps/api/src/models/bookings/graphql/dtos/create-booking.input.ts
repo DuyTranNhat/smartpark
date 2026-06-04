@@ -7,4 +7,3 @@ export class CreateBookingInput extends OmitType(
   ['createdAt', 'updatedAt', 'id'],
   InputType,
 ) {}
-

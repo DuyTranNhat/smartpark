@@ -1,4 +1,10 @@
-import { ArgsType, Field, registerEnumType, PartialType, Int } from '@nestjs/graphql'
+import {
+  ArgsType,
+  Field,
+  registerEnumType,
+  PartialType,
+  Int,
+} from '@nestjs/graphql'
 import { Prisma } from '@prisma/client'
 import { UserOrderByWithRelationInput } from './order-by.args'
 import { UserWhereInput, UserWhereUniqueInput } from './where.args'
@@ -30,9 +36,7 @@ class FindManyUserArgsStrict {
 }
 
 @ArgsType()
-export class FindManyUserArgs extends PartialType(
-  FindManyUserArgsStrict,
-) {}
+export class FindManyUserArgs extends PartialType(FindManyUserArgsStrict) {}
 
 @ArgsType()
 export class FindUniqueUserArgs {

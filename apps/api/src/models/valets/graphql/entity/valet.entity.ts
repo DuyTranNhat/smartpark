@@ -3,18 +3,18 @@ import { Valet as ValetType } from '@prisma/client'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 @ObjectType()
-export class Valet implements RestrictProperties<Valet,ValetType> {
-    uid: string
-    createdAt: Date
-    updatedAt: Date
+export class Valet implements RestrictProperties<Valet, ValetType> {
+  uid: string
+  createdAt: Date
+  updatedAt: Date
 
-    displayName: string
+  displayName: string
 
-    @Field({ nullable: true })
-    image: string | null
+  @Field({ nullable: true })
+  image: string | null
 
-    licenceID: string
+  licenceID: string
 
-    @Field({ nullable: true })
-    companyId: number | null
+  @Field({ nullable: true })
+  companyId: number | null
 }

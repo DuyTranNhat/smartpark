@@ -3,21 +3,21 @@ import { Prisma } from '@prisma/client'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 
 @InputType()
-export class AdminOrderByWithRelationInputStrict
-  implements RestrictProperties<AdminOrderByWithRelationInputStrict, Prisma.AdminOrderByWithRelationInput>
-{
+export class AdminOrderByWithRelationInputStrict implements RestrictProperties<
+  AdminOrderByWithRelationInputStrict,
+  Prisma.AdminOrderByWithRelationInput
+> {
   @Field(() => Prisma.SortOrder)
   uid: Prisma.SortOrder
   @Field(() => Prisma.SortOrder)
   createdAt: Prisma.SortOrder
-  @Field(() => Prisma.SortOrder)  
+  @Field(() => Prisma.SortOrder)
   updatedAt: Prisma.SortOrder
   @Field(() => Prisma.SortOrder)
   user: Prisma.UserOrderByWithRelationInput
   // Todo: Add below field decorator to the SortOrder properties.
   // @Field(() => Prisma.SortOrder)
 }
-
 
 @InputType()
 export class AdminOrderByWithRelationInput extends PartialType(

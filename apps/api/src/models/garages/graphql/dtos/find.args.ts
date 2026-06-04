@@ -9,9 +9,10 @@ registerEnumType(Prisma.GarageScalarFieldEnum, {
 })
 
 @ArgsType()
-class FindManyGarageArgsStrict
-  implements RestrictProperties<FindManyGarageArgsStrict, Omit<Prisma.GarageFindManyArgs, 'include' | 'select'>>
-{
+class FindManyGarageArgsStrict implements RestrictProperties<
+  FindManyGarageArgsStrict,
+  Omit<Prisma.GarageFindManyArgs, 'include' | 'select'>
+> {
   where: GarageWhereInput
   orderBy: GarageOrderByWithRelationInput[]
   cursor: GarageWhereUniqueInput
@@ -22,9 +23,7 @@ class FindManyGarageArgsStrict
 }
 
 @ArgsType()
-export class FindManyGarageArgs extends PartialType(
-  FindManyGarageArgsStrict,
-) {}
+export class FindManyGarageArgs extends PartialType(FindManyGarageArgsStrict) {}
 
 @ArgsType()
 export class FindUniqueGarageArgs {

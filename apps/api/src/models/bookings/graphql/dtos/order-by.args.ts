@@ -7,10 +7,11 @@ import { SlotOrderByWithRelationInput } from 'src/models/slots/graphql/dtos/orde
 import { ValetAssignmentOrderByWithRelationInput } from 'src/models/valet-assignments/graphql/dtos/order-by.args'
 
 @InputType()
-export class BookingOrderByWithRelationInputStrict
-  implements RestrictProperties<BookingOrderByWithRelationInputStrict, Prisma.BookingOrderByWithRelationInput>
-{
-   @Field(() => Prisma.SortOrder)
+export class BookingOrderByWithRelationInputStrict implements RestrictProperties<
+  BookingOrderByWithRelationInputStrict,
+  Prisma.BookingOrderByWithRelationInput
+> {
+  @Field(() => Prisma.SortOrder)
   id: Prisma.SortOrder
   @Field(() => Prisma.SortOrder)
   createdAt: Prisma.SortOrder
@@ -40,11 +41,10 @@ export class BookingOrderByWithRelationInputStrict
   Customer: CustomerOrderByWithRelationInput
   Slot: SlotOrderByWithRelationInput
   BookingTimeline: BookingTimelineOrderByRelationAggregateInput
- 
+
   // Todo: Add below field decorator to the SortOrder properties.
   // @Field(() => Prisma.SortOrder)
 }
-
 
 @InputType()
 export class BookingOrderByWithRelationInput extends PartialType(

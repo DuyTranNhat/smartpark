@@ -1,5 +1,12 @@
 import {
-  Controller, Get, Post, Body, Patch, Param, Delete, Query
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
 } from '@nestjs/common'
 
 import { PrismaService } from 'src/common/prisma/prisma.service'
@@ -17,7 +24,6 @@ import { AllowAuthenticated, GetUser } from 'src/common/auth/auth.decorator'
 import type { GetUserType } from 'src/common/types'
 import { checkRowLevelPermission } from 'src/common/auth/util'
 
-
 @ApiTags('verifications')
 @Controller('verifications')
 export class VerificationsController {
@@ -27,9 +33,14 @@ export class VerificationsController {
   @ApiBearerAuth()
   @ApiCreatedResponse({ type: VerificationEntity })
   @Post()
-  create(@Body() createVerificationDto: CreateVerification, @GetUser() user: GetUserType) {
+  create(
+    @Body() createVerificationDto: CreateVerification,
+    @GetUser() user: GetUserType,
+  ) {
     checkRowLevelPermission(user, (createVerificationDto as any).uid)
-    return this.prisma.verification.create({ data: createVerificationDto as any })
+    return this.prisma.verification.create({
+      data: createVerificationDto as any,
+    })
   }
 
   @ApiOkResponse({ type: [VerificationEntity] })
@@ -57,7 +68,9 @@ export class VerificationsController {
     @Body() updateVerificationDto: UpdateVerification,
     @GetUser() user: GetUserType,
   ) {
-    const verification = await this.prisma.verification.findUnique({ where: { garageId } })
+    const verification = await this.prisma.verification.findUnique({
+      where: { garageId },
+    })
     checkRowLevelPermission(user, (verification as any)?.adminId)
     return this.prisma.verification.update({
       where: { garageId },
@@ -68,8 +81,13 @@ export class VerificationsController {
   @ApiBearerAuth()
   @AllowAuthenticated()
   @Delete(':garageId')
-  async remove(@Param('garageId') garageId: number, @GetUser() user: GetUserType) {
-    const verification = await this.prisma.verification.findUnique({ where: { garageId } })
+  async remove(
+    @Param('garageId') garageId: number,
+    @GetUser() user: GetUserType,
+  ) {
+    const verification = await this.prisma.verification.findUnique({
+      where: { garageId },
+    })
     checkRowLevelPermission(user, (verification as any)?.adminId)
     return this.prisma.verification.delete({ where: { garageId } })
   }

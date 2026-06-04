@@ -1,6 +1,10 @@
 import { Field, InputType, PartialType } from '@nestjs/graphql'
 import { Prisma } from '@prisma/client'
-import { DateTimeFilter, RestrictProperties, StringFilter } from 'src/common/dtos/common.input'
+import {
+  DateTimeFilter,
+  RestrictProperties,
+  StringFilter,
+} from 'src/common/dtos/common.input'
 import { UserRelationFilter } from 'src/models/users/graphql/dtos/where.args'
 import { BookingListRelationFilter } from 'src/models/bookings/graphql/dtos/where.args'
 import { ReviewListRelationFilter } from 'src/models/reviews/graphql/dtos/where.args'
@@ -47,9 +51,7 @@ export class CustomerWhereInputStrict {
 }
 
 @InputType()
-export class CustomerWhereInput extends PartialType(
-  CustomerWhereInputStrict,
-) {}
+export class CustomerWhereInput extends PartialType(CustomerWhereInputStrict) {}
 
 @InputType()
 export class CustomerListRelationFilter {
