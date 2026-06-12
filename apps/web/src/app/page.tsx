@@ -2,6 +2,7 @@
 import { useQuery } from '@apollo/client'
 import { CompaniesDocument } from '@smartpark/network/src/gql/generated'
 import { Button } from '@smartpark/ui/src/components/atoms/Button'
+import { Sidebar } from '@smartpark/ui/src/components/organisms/Sidebar'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 
@@ -16,6 +17,9 @@ export default function Home() {
         ) : (
           <Link href="/login">Login</Link>
         )}
+        <div className="p-12">
+          <Sidebar>Children...</Sidebar>
+      </div>
       </div>
       <div>
         <h3>
