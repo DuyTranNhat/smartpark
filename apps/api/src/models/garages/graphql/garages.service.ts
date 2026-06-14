@@ -9,7 +9,7 @@ export class GaragesService {
   constructor(private readonly prisma: PrismaService) {}
   create(createGarageInput: CreateGarageInput) {
     return this.prisma.garage.create({
-      data: createGarageInput as any,
+      data: createGarageInput,
     })
   }
 
