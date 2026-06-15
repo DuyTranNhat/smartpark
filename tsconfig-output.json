@@ -1,0 +1,129 @@
+yarn run v1.22.21
+$ yarn nx run-many -t tsc --showConfig
+$ C:\Users\ADMIN\Desktop\Learn_space\FullStack\Parking_Project\node_modules\.bin\nx run-many -t tsc --showConfig
+
+[7m[1m[36m NX [39m[22m[27m  [36mRunning target [1mtsc[22m for 2 projects:[39m
+
+[2m-[22m @smartpark/sample-lib
+[2m-[22m web
+
+[2mWith additional flags:[22m
+  --showConfig=true
+
+[2m[36m[39m[22m
+
+[2m> [22m[2mnx run[22m @smartpark/sample-lib:tsc --showConfig
+
+[2K[1G[2m$ tsc --noEmit --showConfig[22m
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "esnext",
+        "module": "commonjs",
+        "strict": true,
+        "outDir": "./dist",
+        "rootDir": "./",
+        "noEmit": true,
+        "useDefineForClassFields": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "strictBuiltinIteratorReturn": true,
+        "alwaysStrict": true,
+        "useUnknownInCatchVariables": true
+    },
+    "files": [
+        "./index.ts"
+    ],
+    "exclude": [
+        "../../node_modules"
+    ]
+}
+
+[2m> [22m[2mnx run[22m web:tsc --showConfig
+
+[2K[1G[2m$ tsc --noEmit --showConfig[22m
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        },
+        "allowSyntheticDefaultImports": true,
+        "resolvePackageJsonExports": true,
+        "resolvePackageJsonImports": true,
+        "preserveConstEnums": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "strictBuiltinIteratorReturn": true,
+        "alwaysStrict": true,
+        "useUnknownInCatchVariables": true
+    },
+    "files": [
+        "./next-env.d.ts",
+        "./tailwind.config.ts",
+        "./src/app/api/auth/[...nextauth]/route.ts",
+        "./src/app/api/auth/token/route.ts",
+        "./src/app/layout.tsx",
+        "./src/app/page.tsx",
+        "./src/app/about/page.tsx",
+        "./src/app/login/page.tsx",
+        "./src/app/register/page.tsx",
+        "./src/app/search/page.tsx",
+        "./.next/types/app/page.ts",
+        "./.next/types/app/about/page.ts",
+        "./.next/types/app/api/auth/[...nextauth]/route.ts",
+        "./.next/types/app/api/auth/token/route.ts",
+        "./.next/types/app/login/page.ts",
+        "./.next/types/app/register/page.ts",
+        "./.next/types/app/search/page.ts"
+    ],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        ".next/dev/types/**/*.ts",
+        "**/*.mts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
+
+[2m[32m[39m[22m
+
+[7m[1m[32m NX [39m[22m[27m  [32mSuccessfully ran target [1mtsc[22m for 2 projects[39m
+
+
+Done in 5.77s.
