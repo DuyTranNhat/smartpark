@@ -8,7 +8,7 @@ mutation registerWithCredentials($registerWithCredentialsInput: RegisterWithCred
   }
 }
 
-query Companies($distinct: [CompanyScalarFieldEnum!], $where: CompanyWhereInput, $orderBy: [CompanyOrderByWithRelationInput!], $cursor: CompanyWhereUniqueInput, $take: Int, $skip: Int) {
+query Companies($distinct: [CompanyScalarFieldEnum!], $where: CompanyWhereInput, $orderBy: [CompanyOrderByWithRelationInput!], $cursor: CompanyWhereUniqueInput, $take: Float, $skip: Float) {
   companies(distinct: $distinct, where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip) {
     id
     createdAt

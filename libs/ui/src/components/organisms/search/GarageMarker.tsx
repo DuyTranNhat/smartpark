@@ -4,6 +4,10 @@ import { useState } from 'react'
 import { Marker } from '../map/MapMarker'
 import { Dialog } from '../../atoms/Dialog'
 import { ParkingIcon } from '../../atoms/ParkingIcon'
+import { FormProviderBookSlot } from '@smartpark/forms/src/bookSlot'
+import { BookSlotPopup } from '../BookSlotPopup'
+import { FormTypeSearchGarage } from '@smartpark/forms/src/searchGarages'
+import { useWatch } from 'react-hook-form'
 
 export const GarageMarker = ({
   marker,
@@ -13,9 +17,16 @@ export const GarageMarker = ({
   const [showPopup, setShowPopup] = useState(false)
   useKeypress(['Escape'], () => setShowPopup(false))
 
+
+  const { endTime, startTime } = useWatch<FormTypeSearchGarage>()
+
   if (!marker.address?.lat || !marker.address.lng) {
     return null
   }
+
+  
+  console.log('open', showPopup)
+
 
   return (
     <>
@@ -25,7 +36,9 @@ export const GarageMarker = ({
         open={showPopup}
         setOpen={setShowPopup}
       >
-        {marker.id}
+          <FormProviderBookSlot defaultValues={{ endTime, startTime }}>
+          <BookSlotPopup garage={marker} />
+        </FormProviderBookSlot>
       </Dialog>
 
       <Marker

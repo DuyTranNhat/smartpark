@@ -22,6 +22,7 @@ import { SlotsModule } from './models/slots/slots.module'
 import { BookingsModule } from './models/bookings/bookings.module'
 import { ValetAssignmentsModule } from './models/valet-assignments/valet-assignments.module'
 import { BookingTimelinesModule } from './models/booking-timelines/booking-timelines.module'
+import { StripeModule } from './models/stripe/stripe.module'
 
 // Todo: Move this to util lib.
 const MAX_AGE = 24 * 60 * 60
@@ -45,6 +46,7 @@ const MAX_AGE = 24 * 60 * 60
     }),
 
     PrismaModule,
+    StripeModule,
     UsersModule,
     AdminsModule,
     CustomersModule,
