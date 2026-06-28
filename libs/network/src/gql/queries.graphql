@@ -70,3 +70,23 @@ query SearchGarages($dateFilter: DateFilterInput!, $locationFilter: LocationFilt
     }
   }
 }
+
+
+query MyCompany {
+  myCompany {
+    id
+    garages {
+      displayName
+      id
+      description
+      address {
+        id
+        address
+        lat
+        lng
+      }
+    }
+    createdAt
+    displayName
+  }
+}
