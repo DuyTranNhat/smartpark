@@ -7,6 +7,7 @@ import {
   SearchGaragesQuery,
 } from '@smartpark/network/src/gql/generated'
 
+import { ManageValets } from './ManageValets'
 import { useFormContext, useWatch, Controller } from 'react-hook-form'
 import { Form } from '../atoms/Form'
 import { Badge } from '../atoms/Badge'
@@ -190,12 +191,15 @@ export const BookSlotPopup = ({
           />
         </HtmlLabel>
 
+
         <HtmlLabel title="Vehicle number" error={errors.vehicleNumber?.message}>
           <HtmlInput placeholder="KA01AB1234" {...register('vehicleNumber')} />
         </HtmlLabel>
         <HtmlLabel title="Phone number" error={errors.phoneNumber?.message}>
           <HtmlInput placeholder="+910000000000" {...register('phoneNumber')} />
         </HtmlLabel>
+
+         <ManageValets garage={garage} />
 
         {totalPriceObj ? (
           <div className="mt-4">
